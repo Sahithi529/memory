@@ -1,0 +1,28 @@
+.card-panel {
+  display: inline-block;
+  background-color: transparent;
+}
+
+.card-body {
+  padding: 0;
+  height: 150px;
+  cursor: pointer;
+}
+
+.img-width {
+  width: 110px;
+}
+
+.real-img {
+  margin: 20% 0;
+}
+
+@media screen and (max-width: 768px) {
+  .card-body {
+    height: auto;
+  }
+
+  .img-style {
+    margin-bottom: 20%;
+  }
+}

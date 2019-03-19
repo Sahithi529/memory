@@ -1,0 +1,82 @@
+<div class="jumbotron">
+  <h1 class="text-center">Memory Game</h1><br><br>
+
+
+    <img src="../favicon.ico" alt="logo" class="img-responsive center-block img-thumbnail" /><br><br>
+
+    <!-- ACCOMPLISHMENTS SECTION -->
+    <label class="text-info" for="list-accomplishments">Accomplishments:</label>
+    <p class="text-warning" *ngIf="players.length === 0">there is no accomplishments yet!</p>
+    <ul class="list-group" style="width: 290px;" id="list-accomplishments">
+      <li class="list-group-item" *ngFor="let player of players | sortPlayers">
+        {{player.name}}, finished at -
+        <span class="text-warning">{{player.minutes | countPipe}}:{{player.seconds | countPipe}}</span>
+        , on - <span class="text-danger">{{player.size === 4 ? '4x4' : '6x6'}}</span>.</li>
+    </ul>
+
+</div>
+
+<div class="container-fluid">
+
+  <!-- SELECT BOARD SIZE SECTION -->
+  <mat-form-field class="full-width">
+    <mat-select placeholder="Select a Board Size:" [(ngModel)]="boardSize" [disabled]="isGameRunning">
+      <mat-option value="4">4x4</mat-option>
+      <mat-option value="6">6x6</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <hr />
+
+  <!-- START AND STOP BUTTONS SECTION  -->
+  <div class="btn-group btn-group-justified">
+    <div class="btn-group">
+      <button mat-raised-button color="primary" class="btn-start" (click)="onStart()" [disabled]="isGameRunning">START</button>
+    </div>
+    <div class="btn-group">
+      <button mat-raised-button color="warn" class="btn-stop" (click)="onStop()" [disabled]="!isGameRunning">STOP</button>
+    </div>
+  </div><br />
+
+  <hr />
+
+  <!-- THE BOARD SECTION -->
+  <mat-card class="back-img">
+
+    <!-- THE HEADER -->
+    <mat-card-header>
+      <mat-card-title><h1 class="head-style">Board Size: {{boardSize}}x{{boardSize}}</h1></mat-card-title>
+    </mat-card-header>
+
+    <hr>
+
+    <!-- HERE IS WHERE THE CARDS PLACED -->
+    <mat-card-content>
+
+      <!-- PROGRESS BAR (showing when loading finished (3 seconds after clicking on START) ) -->
+      <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+
+      <!-- THE COUNT TIME -->
+      <p class="counter-text">{{minutes | countPipe}}:{{seconds | countPipe}}</p>
+
+      <hr>
+
+      <!-- HERE IS THE CARDS -->
+      <table class="table table-responsive table-condensed">
+        <tr *ngFor="let tr of cards; let row = index" class="borderless">
+          <td *ngFor="let card of cards[row]">
+            <app-card [card]="card" (click)="onClick(card)"></app-card>
+          </td>
+        </tr>
+      </table>
+
+      <!-- WHEN THE IS OVER -->
+      <div *ngIf="!isGameRunning && isGameOver" [@in]>
+        <p class="good-job">GOOD JOB!!</p>
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

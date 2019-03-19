@@ -1,0 +1,21 @@
+<h2 mat-dialog-title class="text-warning">new Accomplishment: {{accomplishmentTime}} </h2>
+
+<hr>
+
+<mat-dialog-content>
+
+  <h3>NICELY DONE!!</h3>
+  <p class="text-info">you have made a new Accomplishment</p>
+  <p class="text-info">you manage to finished faster than another pepole who played this game.</p>
+  <p></p>
+  <mat-form-field class="full-width">
+    <input matInput class="full-width" placeholder="Please enter your name:" [(ngModel)]="playerName" required #nameInput="ngModel" maxlength="20" minlength="3">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button style="color: red;" mat-dialog-close>Cancel</button>
+
+  <button mat-raised-button style="color: green;" [mat-dialog-close]="playerName" [disabled]="nameInput.invalid">Save</button>
+</mat-dialog-actions>

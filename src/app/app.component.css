@@ -1,0 +1,38 @@
+.borderless td, .borderless th {
+    border: none;
+}
+
+.head-style {
+  text-shadow: 0 0 10px gold;
+  color:rgba(23, 122, 134, 0.7);
+}
+
+.btn-start {
+  width: 100%;
+}
+
+.btn-stop {
+  width: 100%;
+}
+
+.back-img {
+  background-image: url(../assets/images/back-img.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.counter-text {
+  text-shadow: 0 0 10px gold;
+  font-family: fantasy;
+  color: aquamarine;
+  opacity: 0.8;
+  text-align: center;
+  font-size: 35px;
+}
+
+.good-job {
+  text-align: center;
+  color: #38d6f186;
+  font-size: 75px;
+  text-shadow: 0 0 15px wheat;
+}

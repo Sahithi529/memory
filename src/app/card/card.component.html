@@ -1,0 +1,14 @@
+<div class="panel panel-default card-panel"
+  [@effect]="card.showImage ? 'normal' : 'reverse'"
+  *ngIf="!card.succeed">
+  <div class="panel-body card-body">
+    <img [style.display]="card.showImage ? 'block' : 'none'"
+        [src]="card.image"
+        alt="Card logo"
+        class="img-responsive img-circle img-width real-img"/>
+      <img [style.display]="card.showImage ? 'none' : 'block'"
+        [src]="card.defaultImage"
+        alt="Card logo"
+        class="img-responsive img-width"/>
+  </div>
+</div>
